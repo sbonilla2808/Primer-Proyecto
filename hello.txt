@@ -1,2 +1,8 @@
 git commit -m "first commit"
  git push -u origen principal
+
+ ejecutar siguiente comando
+
+ ```
+ python app.py
+ ```
