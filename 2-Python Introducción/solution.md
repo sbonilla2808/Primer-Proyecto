@@ -3,20 +3,20 @@ ANWERS
 
 1- What are 4 data types present in python?
 
-   INT
-   BOOL
-   STR
-   FLOAT
+   "INT"
+   "BOOL"
+   "STR"
+   "FLOAT"
 
 2- What function is used to know the data type of a variable?
  
-   TYPE ()
+   "TYPE" ()
 
 3-What is the difference between / and //?
 
-   use a / is for division to return decimal numbers
+   use a "/" is for division to return decimal numbers
 
-   using two // in a division serves so that the answer of the division is in    whole numbers
+   using two "//" in a division serves so that the answer of the division is in    whole numbers
 
 4- What does the function pow(a, b) do?
 
@@ -26,7 +26,7 @@ ANWERS
 
 5- What does the function round(a, b) do?
 
-rounds to the given number of digits and returns the floating point number, if no number of digits to round is given, rounds the number to the nearest integer.
+ rounds to the given number of digits and returns the floating point number, if no number of digits to round is given, rounds the number to the nearest integer.
 
 6- What does the function bin(a, b) do?
 
@@ -46,8 +46,7 @@ rounds to the given number of digits and returns the floating point number, if n
 
 10- What does the operator in do?
 
-    in returns True if the specified value is found in the sequence. Otherwise it     returns False.
-
+    "in" returns "True" if the specified value is found in the sequence. Otherwise it     returns "False".
 
 11- What is operator precedence?
 
@@ -102,7 +101,7 @@ EXAMPLE: string=raw_input("Enter string:")
          for i in string:
          if(i=='a' or i=='e' or i=='i' or i=='o' or i=='u' or i=='A' or i=='E' or i=='I' or i=='O' or i=='U'):
             vowels=vowels+1
-         print("Number of vowels are:")
+         print("Number of vowels are:") 
          print(vowels)
 
 
