@@ -1,5 +1,4 @@
 ID_LENGTH = 9
-
 # usuario mete su id
 while True:
     try:
@@ -16,5 +15,5 @@ while True:
         print("Debes escribir un ID valido, al ID le faltan numeros.")
         continue
     
-    print("ID valido, sigamos con lo que sigue...")
+    print("El ID es valido. Guardado.")
     break    
