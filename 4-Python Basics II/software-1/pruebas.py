@@ -1,4 +1,5 @@
-
+#Usuario Introduce Nombre
+#numeros
 def broo():
 
   NUMEROS = 0
