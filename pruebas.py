@@ -1,4 +1,3 @@
-
 n = 0
 
 # usuario mete su id
@@ -20,5 +19,3 @@ while True:
     print("Nombre guardado")
     break    
 
-
- 
