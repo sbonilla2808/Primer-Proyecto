@@ -1,26 +1,25 @@
-#Usuario Introduce Nombre
-#numeros
-def broo():
-
-  NUMEROS = 0
 
 
-  while True:
-    try:
-        nombre = input("Escribe tu nombre \n")
-        a = int(nombre)
-    except ValueError:
-        print("Nombre valido")
-        break
+def new_func():
 
-    if (a) +- NUMEROS:
-        print("El nombre no puede tener numeros.")
-        continue
+    while True:
+        
+        a = str(input("Escriba su nombre \n"))
+        demas_letras = a[1::]
+        primera_letra = a[0]
+        
+        if not primera_letra.isupper():
+            print("La primera letra debe ser mayuscula") 
+            continue
 
-    if (a) == NUMEROS:
-        print("El nombre no puede tener numeros")
-        continue
-    
-   
+        if not demas_letras.islower():
+            print("Solo la primer letra puede ser mayuscula")
+            continue
 
-broo()
+        if primera_letra.isupper and demas_letras.islower():
+            print("Nombre guardado")
+            break
+
+       
+
+new_func()
