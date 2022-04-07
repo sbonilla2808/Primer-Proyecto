@@ -1,33 +1,25 @@
-# usuario mete su nombre
-
+#Usuario Introduce Nombre
 def new_func():
 
     while True:
         
         a = str(input("Escriba su nombre \n"))
-
+        demas_letras = a[1::]
         primera_letra = a[0]
+        
         if not primera_letra.isupper():
             print("La primera letra debe ser mayuscula") 
             continue
 
-        demas_letras = a[:1]
-        if demas_letras.isupper():
-            print("Solo la primera letra puede ser mayuscula") 
+        if not demas_letras.islower():
+            print("Solo la primer letra puede ser mayuscula")
             continue
 
-        if a.isupper():
-            print("Nombre guardado") 
+        if primera_letra.isupper and demas_letras.islower():
+            print("Nombre guardado")
             break
 
-        
-
-
-        
-
-
-
-        
+       
 
 new_func()
 
