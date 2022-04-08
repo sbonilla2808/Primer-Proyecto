@@ -1,20 +1,17 @@
 ########################################################################################################################################
-
+"""
 
 print("Bienvenido a este nuevo programa \n ")
 print("Condiciones y privacidad: debes registrar tu informacion personal para continuar. (Tu informacion personal no sera compartida ni revlada a terceros, eso solo de uso oficial para este programa.)")
 while True:
-    print("                                              ")
-    print("Aceptas las condiciones?, si es asi escribe: acepto. De lo contrario vuelve cuando estes listo. \n")
-    print("                                              ")
-    aceptas = input("Responde: ")
-    acepto = "acepto"
+    acepta = input("\n Aceptas las condiciones?(si/no) " 
+    acepto = "si"
     if aceptas == acepto:
         pass
     else:
         print("Debes aceptar para continuar.")
         continue
-
+"""
 
 ########################################################################################################################################
 
