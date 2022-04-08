@@ -1,5 +1,22 @@
-print("##############################################")
-print("                                              ")
+########################################################################################################################################
+
+
+print("Bienvenido a este nuevo programa \n ")
+print("Condiciones y privacidad: debes registrar tu informacion personal para continuar. (Tu informacion personal no sera compartida ni revlada a terceros, eso solo de uso oficial para este programa.)")
+while True:
+    print("                                              ")
+    print("Aceptas las condiciones?, si es asi escribe: acepto. De lo contrario vuelve cuando estes listo. \n")
+    print("                                              ")
+    aceptas = input("Responde: ")
+    acepto = "acepto"
+    if aceptas == acepto:
+        pass
+    else:
+        print("Debes aceptar para continuar.")
+        continue
+
+
+########################################################################################################################################
 
 
 ID_LENGTH = 9
@@ -20,18 +37,30 @@ while True:
         continue
     
     print("El ID es valido. Guardado.")
-    break    
+    break
 
 
+########################################################################################################################################
+#######CONTRASEÑA#######
 
-print("##############################################")
-print("                                              ")
 
- 
-def new_func():
+print("Debes crear una contraseña que por seguridad contenga tanto letras como numeros \n")
+contraseña = input("Escribe tu nueva contraseña: \n")
+print("Contraseña guardada, por favor no la olvides")
 
-    while True:
-        a = str(input("Escriba su nombre: \n"))
+
+#####################################
+id_guardado = id
+#####################################
+contraseña_guardada = contraseña
+#####################################
+
+########################################################################################################################################
+
+print("Debes regist")
+
+while True:
+        a = str(input("Escriba su primer nombre: \n"))
         ###VARIABLES###
         demas_letras = a[1::]
         primera_letra = a[0]
@@ -40,7 +69,7 @@ def new_func():
         if a.isalpha():
             pass
         else:
-            print("No se permiten numeros")
+            print("No se permiten numeros ni espacios")
         #VALIDAR MAYUS_MINIS
         if not primera_letra.isupper():
             print("La primera letra debe ser mayuscula") 
@@ -54,10 +83,16 @@ def new_func():
             print("Nombre guardado")
             break      
 
-new_func()
 
+#############
+nombre_guardado = a
+#############
 
-print("##############################################")
-print("                                              ")
+########################################################################################################################################
 
  
+
+
+
+
+
