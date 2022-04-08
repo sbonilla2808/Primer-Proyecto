@@ -1,18 +1,29 @@
 ID_LENGTH = 9
-# usuario mete su id
+# usuario introduce su id
+print("\n Bienvenido, ingresa tu ID, el ID solo puede contener numeros. \n")
 while True:
     try:
         id = int(input("Escribe tu ID: \n"))
     except ValueError:
-        print("Debes escribir un número, el ID no puede contener letras ni caracteres.")
+        print("Solo se permiten numeros.")
         continue
 
+    if id.isdigit():
+        print("Solo se permiten letras")
+        continue
+
+    if id.isalpha():
+        print("Solo se permiten numeros.")
+        continue
+    if id.isalnum():
+        pass
+
     if len(str(id)) > ID_LENGTH:
-        print("Debes escribir un ID valido, tienes numeros de mas.")
+        print("Incorrecto, tienes numeros de mas.")
         continue
 
     if len(str(id)) < ID_LENGTH:
-        print("Debes escribir un ID valido, al ID le faltan numeros.")
+        print("Incorrecto, te faltan numeros.")
         continue
     
     print("El ID es valido. Guardado.")
