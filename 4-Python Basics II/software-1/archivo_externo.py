@@ -1,9 +1,16 @@
+from io import open
+
+archivo_texto = open("Data_Bases","w")
+
+frase1 = "Bienevenido a la Base de Datos \n"
+
 ID_LENGTH = 9
 # usuario introduce su id
-print("\n Bienvenido, ingresa tu ID, el ID solo puede contener numeros. \n")
+print("Bienvenido, ingresa tu ID, el ID solo puede contener numeros. \n")
+
 while True:
     try:
-        id = int(input("Escribe tu ID: \n"))
+        id = str(int(input("Escribe tu ID: \n")))
     except ValueError:
         print("Solo se permiten numeros.")
         continue
@@ -18,3 +25,18 @@ while True:
     
     print("El ID es valido. Guardado.")
     break    
+
+############################
+archivo_texto.write(frase1)
+archivo_texto.write(id)
+
+
+
+
+
+archivo_texto.close()
+
+
+
+
+
