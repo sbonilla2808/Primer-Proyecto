@@ -1,4 +1,4 @@
-print("\n Bienvenido, en este espacio debes registrar tu nombre, en el nombre solo se permiten numeros. \n")
+print("\n Bienvenido, en este espacio debes registrar tu nombre, en el nombre solo se permiten letras. \n")
 
 def new_func():
 
