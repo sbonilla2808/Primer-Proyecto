@@ -3,16 +3,16 @@ print("\n Bienvenido, en este espacio debes registrar tu nombre, en el nombre so
 def new_func():
 
     while True:
-        a = str(input("Escriba su nombre: \n"))
+        nombre = str(input("Escriba su nombre: \n"))
         ###VARIABLES###
-        demas_letras = a[1::]
-        primera_letra = a[0]
+        demas_letras = nombre[1::]
+        primera_letra = nombre[0]
 
         #VALIDAR NUMEROS
-        if a.isdigit():
+        if nombre.isdigit():
             print("Solo se permiten letras")
             continue
-        if a.isalpha():
+        if nombre.isalpha():
             pass
         else:
             print("Solo se permiten letras.")
