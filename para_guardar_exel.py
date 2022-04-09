@@ -2,7 +2,8 @@
 
 from io import open
 
-archivo_texto = open("excel_Bases.csv","w")
+archivo_texto = open("excel_Bases.csv","a")
+
 
 ID_LENGTH = 9
 # usuario introduce su id
