@@ -4,7 +4,7 @@ from io import open
 
 imprime = open("excel_Bases.csv","r")
 
-texto = imprime.read()
+texto = imprime.read(id)
 
 
 

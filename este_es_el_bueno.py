@@ -1,4 +1,4 @@
-#########imprimir
+#########imprimir######################
 
 from io import open
 
@@ -115,3 +115,22 @@ def new_func2():
 new_func2()
 
 archivo_texto.close()
+
+#######################################
+#valida el id
+########REAAAAD########################
+
+imprime = open("excel_Bases.csv","r")
+
+texto = imprime.read()
+def bien():
+    while True:
+        if id in texto:
+            print("si estas aqui")
+            break
+        else:
+            continue
+
+
+bien()
+imprime.close()
