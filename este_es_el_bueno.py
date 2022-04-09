@@ -123,14 +123,35 @@ archivo_texto.close()
 imprime = open("excel_Bases.csv","r")
 
 texto = imprime.read()
-def bien():
+
+def bienid():
     while True:
-        if id in texto:
-            print("si estas aqui")
-            break
+        try:
+          id2 = str(int(input("Escribe tu ID: \n")))
+        except ValueError:
+          print("Solo se permiten numeros.")
+          continue
+
+        if len(str(id2)) > ID_LENGTH:
+          print("Incorrecto, tienes numeros de mas.")
+          continue
+
+        if len(str(id2)) < ID_LENGTH:
+          print("Incorrecto, te faltan numeros.")
+          continue
+
+        if id2 in texto:
+            print("ID correcto.")
+            pass
         else:
             continue
 
 
-bien()
 imprime.close()
+bienid()
+
+
+
+
+
+
