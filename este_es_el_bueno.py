@@ -1,5 +1,5 @@
 #########imprimir######################
-
+"""
 from io import open
 
 archivo_texto = open("excel_Bases.csv","a")
@@ -149,33 +149,37 @@ def bienid():
 imprime.close()
 bienid()
 
+"""
+
 ##############NOTAS########################### 
+
 archivo_texto = open("excel_Bases.csv","a")
 
-notas1 = 100
-notasc2 = 0
+
+NOTA_LENGTH = 0
+NOTA_2 = 100
+# usuario introduce su id
+print("\n Bienvenido a la seccion de notas, las notas solo pueden contener numeros entre 0 y 100. \n")
 
 while True:
+
     try:
-        notas = str(int(input("Introduce una nota: \n")))
+        notas = str(int(input("Escribe tu notas: \n")))
     except ValueError:
         print("Solo se permiten numeros.")
         continue
 
-    if len(str(id)) > notas1:
+    if int(notas) > NOTA_LENGTH:
         print("Incorrecto, tienes numeros de mas.")
         continue
 
-    if len(str(id)) < notasc2:
+    if int(notas) < NOTA_LENGTH:
         print("Incorrecto, te faltan numeros.")
         continue
     
-    print("Nota valida. Guardado.")
-    break
-    
-
-
-
+    print("La nota es valida. Guardado.")
+    break    
+  
 
 
 
