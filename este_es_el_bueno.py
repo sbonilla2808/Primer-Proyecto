@@ -142,16 +142,42 @@ def bienid():
 
         if id2 in texto:
             print("ID correcto.")
-            pass
+            break
         else:
             continue
-
 
 imprime.close()
 bienid()
 
+##############NOTAS########################### 
+archivo_texto = open("excel_Bases.csv","a")
+
+notas1 = 100
+notasc2 = 0
+
+while True:
+    try:
+        notas = str(int(input("Introduce una nota: \n")))
+    except ValueError:
+        print("Solo se permiten numeros.")
+        continue
+
+    if len(str(id)) > notas1:
+        print("Incorrecto, tienes numeros de mas.")
+        continue
+
+    if len(str(id)) < notasc2:
+        print("Incorrecto, te faltan numeros.")
+        continue
+    
+    print("Nota valida. Guardado.")
+    break
+    
 
 
 
 
 
+
+archivo_texto.write(notas)
+archivo_texto.close()
