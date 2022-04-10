@@ -1,7 +1,6 @@
 from io import open
 
-print("\n")
-print("Bienvenido, en este espacio debes registrar tu nombre, en el nombre solo se permiten letras. \n")
+print("\n" "Bienvenido, en este espacio debes registrar tu nombre, en el nombre solo se permiten letras. \n")
 
 def new_func():
 
