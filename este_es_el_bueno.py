@@ -260,7 +260,13 @@ texto2 = archivo_texto2.write(notas4)
 
 archivo_texto2.close()
 
-###APARECE ESTO CUANDO GUARDO EN EXCEL: el archivo ha cambiado desde que se abrió para editarlo en libreOffice. Guardar su versión del documento sobrescribirá los cambios realizados por otros
+
+
+
+
+
+
+
 
 
 

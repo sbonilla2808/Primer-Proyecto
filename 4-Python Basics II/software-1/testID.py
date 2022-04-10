@@ -1,9 +1,11 @@
+from io import open
+
 ID_LENGTH = 9
 # usuario introduce su id
-print("\n Bienvenido, ingresa tu ID, el ID solo puede contener numeros. \n")
+print("Bienvenido, ingresa tu ID, el ID solo puede contener numeros. \n")
 while True:
     try:
-        id = int(input("Escribe tu ID: \n"))
+        id = str(int(input("Escribe tu ID: \n")))
     except ValueError:
         print("Solo se permiten numeros.")
         continue
@@ -18,3 +20,7 @@ while True:
     
     print("El ID es valido. Guardado.")
     break    
+
+with open("excel_Bases.csv","a") as archivo_texto: 
+    archivo_texto.write(str(id)+",")
+
