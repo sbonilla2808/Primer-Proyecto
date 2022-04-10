@@ -1,19 +1,12 @@
+####################################################################
+imprime = open("excel_Bases.csv","r")
 
+texto = imprime.read()
 
-
-################
-# valida el id #
-################
-
-from logging.config import IDENTIFIER
-
+print("\n" "Bienvenido a la seccion de regristro, debes introducir un ID que ya este registrado en la base de datos.")
 
 ID_LENGTH = 9
 def bienid():
-
-    with open("excel_Bases.csv","r") as archivo_texto2: 
-        archivo_texto2.read()
-
     while True:
         try:
           id2 = str(int(input("Escribe tu ID: \n")))
@@ -29,26 +22,24 @@ def bienid():
           print("Incorrecto, te faltan numeros.")
           continue
 
-        if id2 in archivo_texto2:
+        if id2 in texto:
             print("ID correcto.")
             break
         else:
             print("ID invalido, el ID no esta en la base de datos.")
             continue
 
+imprime.close()
 bienid()
-
-
-
-
+####################################################################
 
 ##############NOTAS########################### 
 
 archivo_texto2 = open("excel_Bases.csv","a")
 # usuario introduce su id
-print("\n Bienvenido a la seccion de notas, las notas solo pueden contener numeros entre 0 y 100. \n")
+print("\n" "Bienvenido a la seccion de notas, las notas solo pueden contener numeros entre 0 y 100. \n" )
 
-#########NOTA 1
+#########NOTA 1##############
 while True:
     try:
         notas1 = str(int(input("Inserte la nota: \n")))
@@ -72,7 +63,7 @@ while True:
         print("Nota guardada")
         break
 
-#########NOTA 2
+#########NOTA 2##############
 while True:
     try:
         notas2 = str(int(input("Inserte la nota: \n")))
@@ -96,7 +87,7 @@ while True:
         print("Nota guardada")
         break
 
-#########NOTA 3
+#########NOTA 3##############
 while True:
     try:
         notas3 = str(int(input("Inserte la nota: \n")))
@@ -120,7 +111,7 @@ while True:
         print("Nota guardada")
         break
 
-#########NOTA 4
+#########NOTA 4##############
 while True:
     try:
         notas4 = str(int(input("Inserte la nota: \n")))
@@ -146,8 +137,8 @@ while True:
 
 with open("excel_Bases.csv","a") as archivo_texto: 
    
-    texto2 = archivo_texto2.write(notas1)
-    texto2 = archivo_texto2.write(notas2)
-    texto2 = archivo_texto2.write(notas3)
-    texto2 = archivo_texto2.write(notas4)
+    texto2 = archivo_texto2.write(str(notas1)+",")
+    texto2 = archivo_texto2.write(str(notas2)+",")
+    texto2 = archivo_texto2.write(str(notas3)+",")
+    texto2 = archivo_texto2.write(str(notas4)+",")
 

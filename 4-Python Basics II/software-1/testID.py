@@ -2,7 +2,8 @@ from io import open
 
 ID_LENGTH = 9
 # usuario introduce su id
-print("Bienvenido, ingresa tu ID, el ID solo puede contener numeros. \n")
+
+print("\n" "Bienvenido, ingresa tu ID, el ID solo puede contener numeros. \n")
 while True:
     try:
         id = str(int(input("Escribe tu ID: \n")))
