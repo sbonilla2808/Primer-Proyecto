@@ -258,5 +258,10 @@ texto2 = archivo_texto2.write(notas2)
 texto2 = archivo_texto2.write(notas3)
 texto2 = archivo_texto2.write(notas4)
 
-
 archivo_texto2.close()
+
+
+
+
+
+
