@@ -1,5 +1,5 @@
 #########imprimir######################
-"""
+
 from io import open
 
 archivo_texto = open("excel_Bases.csv","a")
@@ -144,17 +144,16 @@ def bienid():
             print("ID correcto.")
             break
         else:
+            print("ID invalido, el ID no esta en la base de datos.")
             continue
 
 imprime.close()
 bienid()
 
-"""
 
 ##############NOTAS########################### 
 
-archivo_texto = open("excel_Bases.csv","a")
-
+archivo_texto2 = open("excel_Bases.csv","a")
 
 NOTA_LENGTH = 0
 NOTA_2 = 100
@@ -184,5 +183,11 @@ while True:
         print("Nota guardada")
         break
 
-archivo_texto.write(notas)
-archivo_texto.close()
+    #if not (notas) in archivo_texto2:
+        #pass
+    #else:
+        #print("No se permiten mas notas, espacios llenos")
+
+texto2 = archivo_texto2.write(notas)
+
+archivo_texto2.close()
