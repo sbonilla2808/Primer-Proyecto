@@ -120,7 +120,7 @@ archivo_texto.close()
 #valida el id
 ########REAAAAD########################
 
-imprime = open("excel_Bases.csv","a")
+imprime = open("excel_Bases.csv","r")
 
 texto = imprime.read()
 
