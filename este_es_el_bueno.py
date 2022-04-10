@@ -154,28 +154,26 @@ bienid()
 ##############NOTAS########################### 
 
 archivo_texto2 = open("excel_Bases.csv","a")
-
-NOTA_LENGTH = 0
-NOTA_2 = 100
 # usuario introduce su id
 print("\n Bienvenido a la seccion de notas, las notas solo pueden contener numeros entre 0 y 100. \n")
 
+#########NOTA 1
 while True:
     try:
-        notas = str(int(input("Inserte la nota: \n")))
+        notas1 = str(int(input("Inserte la nota: \n")))
     except ValueError:
         print("Solo se permiten numeros.")
         continue
 
-    if int(notas) < 0:
+    if int(notas1) < 0:
         print("Nota invalida.")
         continue
 
-    if int(notas) == 0:
+    if int(notas1) == 0:
         print("Nota guardada.")
         break
 
-    if int(notas) > 100:
+    if int(notas1) > 100:
         print("Nota invalida.")
         continue
 
@@ -183,11 +181,82 @@ while True:
         print("Nota guardada")
         break
 
-    #if not (notas) in archivo_texto2:
-        #pass
-    #else:
-        #print("No se permiten mas notas, espacios llenos")
+#########NOTA 2
+while True:
+    try:
+        notas2 = str(int(input("Inserte la nota: \n")))
+    except ValueError:
+        print("Solo se permiten numeros.")
+        continue
 
-texto2 = archivo_texto2.write(notas)
+    if int(notas2) < 0:
+        print("Nota invalida.")
+        continue
+
+    if int(notas2) == 0:
+        print("Nota guardada.")
+        break
+
+    if int(notas2) > 100:
+        print("Nota invalida.")
+        continue
+
+    else:
+        print("Nota guardada")
+        break
+
+#########NOTA 3
+while True:
+    try:
+        notas3 = str(int(input("Inserte la nota: \n")))
+    except ValueError:
+        print("Solo se permiten numeros.")
+        continue
+
+    if int(notas3) < 0:
+        print("Nota invalida.")
+        continue
+
+    if int(notas3) == 0:
+        print("Nota guardada.")
+        break
+
+    if int(notas3) > 100:
+        print("Nota invalida.")
+        continue
+
+    else:
+        print("Nota guardada")
+        break
+
+#########NOTA 4
+while True:
+    try:
+        notas4 = str(int(input("Inserte la nota: \n")))
+    except ValueError:
+        print("Solo se permiten numeros.")
+        continue
+
+    if int(notas4) < 0:
+        print("Nota invalida.")
+        continue
+
+    if int(notas4) == 0:
+        print("Nota guardada.")
+        break
+
+    if int(notas4) > 100:
+        print("Nota invalida.")
+        continue
+
+    else:
+        print("Nota guardada")
+        break
+
+texto2 = archivo_texto2.write(notas1)
+texto2 = archivo_texto2.write(notas2)
+texto2 = archivo_texto2.write(notas3)
+texto2 = archivo_texto2.write(notas4)
+
 
 archivo_texto2.close()
