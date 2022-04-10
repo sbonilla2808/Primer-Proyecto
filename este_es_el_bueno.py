@@ -162,26 +162,27 @@ NOTA_2 = 100
 print("\n Bienvenido a la seccion de notas, las notas solo pueden contener numeros entre 0 y 100. \n")
 
 while True:
-
     try:
-        notas = str(int(input("Escribe tu notas: \n")))
+        notas = str(int(input("Inserte la nota: \n")))
     except ValueError:
         print("Solo se permiten numeros.")
         continue
 
-    if int(notas) > NOTA_LENGTH:
-        print("Incorrecto, tienes numeros de mas.")
+    if int(notas) < 0:
+        print("Nota invalida.")
         continue
 
-    if int(notas) < NOTA_LENGTH:
-        print("Incorrecto, te faltan numeros.")
+    if int(notas) == 0:
+        print("Nota guardada.")
+        break
+
+    if int(notas) > 100:
+        print("Nota invalida.")
         continue
-    
-    print("La nota es valida. Guardado.")
-    break    
-  
 
-
+    else:
+        print("Nota guardada")
+        break
 
 archivo_texto.write(notas)
 archivo_texto.close()
