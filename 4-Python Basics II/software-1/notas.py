@@ -63,82 +63,11 @@ while True:
         print("Nota guardada")
         break
 
-#########NOTA 2##############
-while True:
-    try:
-        notas2 = str(int(input("Inserte la nota: \n")))
-    except ValueError:
-        print("Solo se permiten numeros.")
-        continue
-
-    if int(notas2) < 0:
-        print("Nota invalida.")
-        continue
-
-    if int(notas2) == 0:
-        print("Nota guardada.")
-        break
-
-    if int(notas2) > 100:
-        print("Nota invalida.")
-        continue
-
-    else:
-        print("Nota guardada")
-        break
-
-#########NOTA 3##############
-while True:
-    try:
-        notas3 = str(int(input("Inserte la nota: \n")))
-    except ValueError:
-        print("Solo se permiten numeros.")
-        continue
-
-    if int(notas3) < 0:
-        print("Nota invalida.")
-        continue
-
-    if int(notas3) == 0:
-        print("Nota guardada.")
-        break
-
-    if int(notas3) > 100:
-        print("Nota invalida.")
-        continue
-
-    else:
-        print("Nota guardada")
-        break
-
-#########NOTA 4##############
-while True:
-    try:
-        notas4 = str(int(input("Inserte la nota: \n")))
-    except ValueError:
-        print("Solo se permiten numeros.")
-        continue
-
-    if int(notas4) < 0:
-        print("Nota invalida.")
-        continue
-
-    if int(notas4) == 0:
-        print("Nota guardada.")
-        break
-
-    if int(notas4) > 100:
-        print("Nota invalida.")
-        continue
-
-    else:
-        print("Nota guardada")
-        break
-
 with open("excel_Bases.csv","a") as archivo_texto: 
-   
     texto2 = archivo_texto2.write(str(notas1)+",")
-    texto2 = archivo_texto2.write(str(notas2)+",")
-    texto2 = archivo_texto2.write(str(notas3)+",")
-    texto2 = archivo_texto2.write(str(notas4)+",")
+
+    if range(notas1[4]) in archivo_texto2:
+        print("Notas completas")
+
+
 
