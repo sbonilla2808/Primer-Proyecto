@@ -1,12 +1,17 @@
 ####################################################################
-imprime = open("excel_Bases.csv","r")
-
-texto = imprime.read()
-
 print("\n" "Bienvenido a la seccion de regristro, debes introducir un ID que ya este registrado en la base de datos.")
 
 ID_LENGTH = 9
 def bienid():
+    file = open('excel_Bases.csv', 'r')
+
+    lines = []
+
+    for line in file:
+        lines.append(line[:len(line)-0])
+        #lines.append(line.split(","))
+        #print(lines)
+
     while True:
         try:
           id2 = str(int(input("Escribe tu ID: \n")))
@@ -22,14 +27,15 @@ def bienid():
           print("Incorrecto, te faltan numeros.")
           continue
 
-        if id2 in texto:
+        if id2 in lines[1]:
             print("ID correcto.")
             break
         else:
             print("ID invalido, el ID no esta en la base de datos.")
             continue
 
-imprime.close()
+    file.close()
+
 bienid()
 ####################################################################
 
@@ -66,8 +72,6 @@ while True:
 with open("excel_Bases.csv","a") as archivo_texto: 
     texto2 = archivo_texto2.write(str(notas1)+",")
 
-    if range(notas1[4]) in archivo_texto2:
-        print("Notas completas")
 
 
 
