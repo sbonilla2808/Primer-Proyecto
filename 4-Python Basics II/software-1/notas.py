@@ -1,17 +1,30 @@
 ####################################################################
-print("\n" "Bienvenido a la seccion de regristro, debes introducir un ID que ya este registrado en la base de datos.")
+#print("\n" "Bienvenido a la seccion de regristro, debes introducir un ID que ya este registrado en la base de datos.")
 
 ID_LENGTH = 9
 def bienid():
-    file = open('excel_Bases.csv', 'r')
+    file = open('Excel_Bases.csv', 'r')
 
     lines = []
 
     for line in file:
         lines.append(line[:len(line)-0])
-        #lines.append(line.split(","))
-        #print(lines)
+        lines.append(line.split(","))
+        columns = line.split(',')
+        grades = columns[3:7]
+        print(grades)
+        if len(grades)>=5:
+            print("Hay 5 notas")
+            return
+        if len(grades)<=3:
+            print("no tiene suficientes notas")
+            break
+        else:
+            pass
+        
 
+bienid()
+"""
     while True:
         try:
           id2 = str(int(input("Escribe tu ID: \n")))
@@ -74,4 +87,4 @@ with open("excel_Bases.csv","a") as archivo_texto:
 
 
 
-
+"""
