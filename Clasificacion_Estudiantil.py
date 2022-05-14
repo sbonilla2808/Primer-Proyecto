@@ -6,17 +6,17 @@ class Utils():
         id_correct = False
         while not id_correct:
             try:
-                user_id = int(input("Escribe el ID del estudiante: \n"))
+                user_id = int(input("Write the ID of the student you want to evaluate: \n"))
             except ValueError:
-                print("Solo se permiten numeros.")
+                print("Only numbers are allowed.")
                 continue
 
             if user_id > 999999999:
-                print("Incorrecto, tienes numeros de mas.")
+                print("Wrong, you have extra numbers.")
                 continue
 
             if user_id < 100000000:
-                print("Incorrecto, te faltan numeros.")
+                print("Wrong, you are missing numbers.")
                 continue
             id_correct = True
         return str(user_id)

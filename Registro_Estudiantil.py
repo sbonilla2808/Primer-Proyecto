@@ -5,88 +5,88 @@ cedula = ""
 nombre = ""
 apellido = ""
 nota = ""
-print("\n" "Bienvenido, ingresa tu ID, el ID solo puede contener numeros. \n")
+print("Welcome, enter your ID, the ID can only contain numbers. \n")
 
 def broo():
     ID_LENGTH = 9
     while True :
         try:
-            id = str(int(input("Escribe tu ID: \n")))
+            id = str(int(input("Write the student ID: \n")))
         except ValueError:
-            print("Solo se permiten numeros.")
+            print("Only numbers are allowed.")
             continue
 
         if len(str(id)) > ID_LENGTH:
-            print("Incorrecto, tienes numeros de mas.")
+            print("Wrong, you have extra numbers.")
             continue
 
         if len(str(id)) < ID_LENGTH:
-            print("Incorrecto, te faltan numeros.")
+            print("Wrong, you are missing numbers")
             continue
         
-        print("El ID es valido. Guardado.")
+        print("The ID is valid. Saved.")
         break    
     cedula = id
 
-    print("\n" "Bienvenido, en este espacio debes registrar tu nombre, en el nombre solo se permiten letras. \n")
+    print("\n" "Welcome, in this space you must register your name, only letters are allowed in the name. \n")
 
     while True:
-        nuevo_nombre = str(input("Escriba su nombre: \n"))
+        nuevo_nombre = str(input("Write your name: \n"))
         
         demas_letras = nuevo_nombre[1::]
         primera_letra = nuevo_nombre[0]
 
         #VALIDAR NUMEROS
         if nuevo_nombre.isdigit():
-            print("Solo se permiten letras")
+            print("Only letters are allowed")
             continue
         if nuevo_nombre.isalpha():
             pass
         else:
-            print("Solo se permiten letras.")
+            print("Only letters are allowed.")
             continue
 
         #VALIDAR MAYUS_MINIS
         if not primera_letra.isupper():
-            print("La primera letra debe ser mayuscula") 
+            print("The first letter must be uppercase") 
             continue
 
         if not demas_letras.islower():
-            print("Solo la primera letra puede ser mayuscula")
+            print("Only the first letter can be capitalized")
             continue
        
         if primera_letra.isupper and demas_letras.islower():
-            print("Nombre guardado")
+            print("Name Save")
             break
 
     nombre = nuevo_nombre
 
     while True:
-        nuevo_apellido = str(input("Escriba su apellido: \n"))
+        nuevo_apellido = str(input("Write your lastname: \n"))
     
         demas_letras = nuevo_apellido[1::]
         primera_letra = nuevo_apellido[0]
 
         if nuevo_apellido.isdigit():
-            print("Solo se permiten letras")
+            print("Only letters are allowed")
             continue
         if nuevo_apellido.isalpha():
             pass
         else:
-            print("Solo se permiten letras.")
+            print("Only letters are allowed.")
             continue
 
         #VALIDAR MAYUS_MINIS
         if not primera_letra.isupper():
-            print("La primera letra debe ser mayuscula") 
+            print("The first letter must be uppercase") 
             continue
 
         if not demas_letras.islower():
-            print("Solo la primera letra puede ser mayuscula")
+            print("Only the first letter can be capitalized")
             continue
     
         if primera_letra.isupper and demas_letras.islower():
-            print("Apellido guardado")
+            print("Lastname Save")
             break  
     apellido = nuevo_apellido
 

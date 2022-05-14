@@ -6,17 +6,17 @@ class Utils():
         id_correct = False
         while not id_correct:
             try:
-                user_id = int(input("Escribe el ID del estudiante: \n"))
+                user_id = int(input("Write the student ID: \n"))
             except ValueError:
-                print("Solo se permiten numeros.")
+                print("Only numbers are allowed.")
                 continue
 
             if user_id > 999999999:
-                print("Incorrecto, tienes numeros de mas.")
+                print("Wrong, you have extra numbers.")
                 continue
 
             if user_id < 100000000:
-                print("Incorrecto, te faltan numeros.")
+                print("Wrong, you are missing numbers.")
                 continue
             id_correct = True
         return str(user_id)
@@ -26,13 +26,13 @@ class Utils():
         grade_correct = False
         while not grade_correct:
             try:
-                grade = int(input("Escribe la nota: \n"))
+                grade = int(input("Write the note: \n"))
             except ValueError:
-                print("Solo se permiten numeros.")
+                print("Only numbers are allowed.")
                 continue
 
             if not (0<=grade<=100):
-                print("Incorrecto, la nota solo va de 0 a 100.")
+                print("Wrong, the note only goes from 0 to 100.")
                 continue
 
             grade_correct = True
@@ -64,13 +64,13 @@ class Db():
         with open(self.filename, 'r') as dbfile:
             lines = dbfile.readlines()
             if row >=len(lines) or row<1:
-                print(f"invalid Row {row}, nothing done")
+                print(f"Invalid Row {row}, nothing done")
                 return
             line = lines[row]
             columns = line.split(',')
             grades = columns[3:]
             if len(grades)>=5:
-                print("no more grades allowed")
+                print("No more grades allowed")
                 return
             print("Grade Save")
             columns = columns[:-1]+ [str(grade), "\n"]
