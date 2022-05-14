@@ -50,9 +50,9 @@ class Db():
             row = 0
             lines = dbfile.readlines()
             for line in lines:
-                print(line)
+                #print(line)
                 columns = line.split(',')
-                print(columns)
+                #print(columns)
                 if cedula==columns[0]:
                     print(f'{cedula} found in row {row}')
                     return row
@@ -60,6 +60,7 @@ class Db():
             print(f'{cedula} not found')
             row = -1
             return row
+
 
     def append_grade(self, row, grade):
         with open(self.filename, 'r') as dbfile:
@@ -80,21 +81,32 @@ class Db():
         with open(self.filename, 'w') as dbfile:
             dbfile.writelines(lines)
 
+    def allows_more_grades(self, row):
 
-    def allows_more_grades(self,row):
-        pass
+        return True
 
 def insert_grade():
     row = -1
     db = Db('Excel_Bases.csv')
     while row < 1:
         cedula = Utils.ask_id()
-        print(cedula)
-        print(type(cedula))
+        #print(cedula)
+        #print(type(cedula))
         row = db.find_id_in_db(cedula)
         db.allows_more_grades(row)
-        nota = Utils.ask_grade()
+        if db.allows_more_grades(row) is False:
+            print("No more")
+            break
+        else:
+            print("Continue")
+            pass
+        nota = Utils.ask_grade() 
         db.append_grade(row, nota)
+        #verifica = 
+
+        
+       
+        
 
 
 insert_grade()
