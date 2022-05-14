@@ -54,10 +54,9 @@ class Db():
                 columns = line.split(',')
                 #print(columns)
                 if cedula==columns[0]:
-                    print(f'{cedula} found in row {row}')
                     return row
                 row += 1
-            print(f'{cedula} not found')
+            return False
             row = -1
             return row
 
@@ -73,9 +72,9 @@ class Db():
             if len(grades)>=5:
                 print("no more grades allowed")
                 return
-            print(f'grades {grades}')
+            print("Grade Save")
             columns = columns[:-1]+ [str(grade), "\n"]
-            print(f'columns {columns}')
+            #print(f'columns {columns}')
             lines[row] = ",".join(columns)
         with open(self.filename, 'w') as dbfile:
             dbfile.writelines(lines)
@@ -98,6 +97,11 @@ def insert_grade():
     while row < 1:
         cedula = Utils.ask_id()
         row = db.find_id_in_db(cedula)
+        if db.find_id_in_db(cedula) is False:
+            print(f'The id {cedula} was not found')
+            break
+        print("Correct ID")
+        pass
         db.allows_more_grades(row)
         if db.allows_more_grades(row) is False:
             print("No more grades"[::1])
@@ -106,7 +110,5 @@ def insert_grade():
             pass
         nota = Utils.ask_grade() 
         db.append_grade(row, nota)
-
-
     
 insert_grade()
