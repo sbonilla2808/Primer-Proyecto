@@ -112,3 +112,31 @@ def insert_grade():
         db.append_grade(row, nota)
     
 insert_grade()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
