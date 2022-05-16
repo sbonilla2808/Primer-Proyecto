@@ -99,7 +99,7 @@ def insert_grade():
         row = db.find_id_in_db(cedula)
         if db.find_id_in_db(cedula) is False:
             print(f'The id {cedula} was not found')
-            break
+            continue
         print("Correct ID")
         pass
         db.allows_more_grades(row)
