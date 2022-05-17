@@ -25,6 +25,10 @@ class Utils():
     def ask_grade():
         grade_correct = False
         while not grade_correct:
+            if grade_correct is True:
+                break
+            else:
+                pass
             try:
                 grade = int(input("Write the note: \n"))
             except ValueError:
@@ -156,7 +160,7 @@ class Db():
             return a
         if nota_3 > nota_2:
             return b
-        if nota_13 > nota_4:
+        if nota_3 > nota_4:
             return c
         else:
             return False
@@ -179,7 +183,7 @@ class Db():
             return a
         if nota_3 > nota_2:
             return b
-        if nota_13 > nota_4:
+        if nota_3 > nota_4:
             return c
         else:
             return False
@@ -204,7 +208,6 @@ def insert_grade():
         elif db.allows_more_grades(row) is True:
             pass
         elif db.allows_more_grades(row) is None:
-            print("No se puede calificar por que tiene menos de 3 notas")
             break
         nota = Utils.ask_grade() 
         db.append_grade(row, nota)
@@ -219,6 +222,11 @@ def insert_grade():
     b = True
     c = True
     while True:
+        if db.allows_more_grades(row) is None:
+            print("No se puede calificar por que tiene menos de 3 notas")
+            break
+        else:
+            pass
         #Nota 1 vs 2::
         if db.evaluate_grade_1(row) == a:
             print("La Nota 1 es mayor que la Nota 2.")

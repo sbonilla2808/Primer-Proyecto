@@ -114,26 +114,36 @@ def insert_grade():
 insert_grade()
 
 
+def vuelve_a_empezar():
+    a = input("¿Desea introducir otra nota?, introduzca (1) para decir que si o (2) para decir que no. \n")
+    
+    c = True
+    b = False
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    row = -1
+    db = Db('Excel_Bases.csv')
+    while row < 1:
+        if a == c:
+            pass
+        if a  == b:
+            break
+        cedula = Utils.ask_id()
+        row = db.find_id_in_db(cedula)
+        if db.find_id_in_db(cedula) is False:
+            print(f'The id {cedula} was not found')
+            continue
+        print("Correct ID")
+        pass
+        db.allows_more_grades(row)
+        if db.allows_more_grades(row) is False:
+            print("No more grades"[::1])
+            break
+        elif db.allows_more_grades(row) is True:
+            pass
+        nota = Utils.ask_grade() 
+        db.append_grade(row, nota)
+        
+vuelve_a_empezar()
 
 
 
