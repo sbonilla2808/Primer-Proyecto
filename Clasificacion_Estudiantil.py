@@ -103,17 +103,13 @@ class Db():
             nota_2 = grades[25:27]
             nota_3 = grades[28:30]
             nota_4 = grades[31:33]
-            #print(nota_1)
-            #print(nota_2)
-            #print(nota_3)
-            #print(nota_4)
         if len(grades)>=5:
             return grades
         return grades
 ##########################################
 
 #########Escoge las notas mas altas
-
+    #Evaluate Nota 1:
     def evaluate_grade_1(self, row):
         with open(self.filename, "r") as verifica:
             lines = verifica.readlines()
@@ -122,21 +118,32 @@ class Db():
             grades = columns[3:]
             nota_1 = grades[22:24]
             nota_2 = grades[25:27]
+            nota_3 = grades[28:30]
+            nota_4 = grades[31:33]
+
         if nota_1 > nota_2:
-            return True
+            if nota_1 > nota_3:
+                if nota_1 > nota_4:
+                    return True
         else:
             return False
-
+    
+    #Evaluate Nota 2
     def evaluate_grade_2(self, row):
         with open(self.filename, "r") as verifica:
             lines = verifica.readlines()
             line = lines[row]
             columns = line
             grades = columns[3:]
+            nota_1 = grades[22:24]
             nota_2 = grades[25:27]
             nota_3 = grades[28:30]
-        if nota_2 > nota_3:
-            return True
+            nota_4 = grades[31:33]
+
+        if nota_1 > nota_2:
+            if nota_1 > nota_3:
+                if nota_1 > nota_4:
+                    return True
         else:
             return False
 
@@ -190,42 +197,49 @@ def insert_grade():
             break
         nota = Utils.ask_grade() 
         db.append_grade(row, nota)
-    ##########
-    while True:
-       ##grades_[1:4]### #
-        db.evaluate_grade_1(row)
 
-        if db.evaluate_grade_1(row) is True:
-            print("La Nota 1 es mayor que la Nota 2.")
-            break
-        else:
-            print("La nota 2 es mayor que la 1")
-            break
-    while True:
-        db.evaluate_grade_2(row)
-        if db.evaluate_grade_2(row) is True:
-            print("La Nota 2 es mayor que la Nota 3.")
-            break
-        else:
-            print("La nota 2 es menor que la nota 3")
-            break
+    ####grades####
+    db.evaluate_grade_1(row)
+    db.evaluate_grade_2(row)  
+    db.evaluate_grade_3(row)
+    db.evaluate_grade_4(row)
     
     while True:
-        db.evaluate_grade_3(row)
+        #Nota 1 vs 2::
+        if db.evaluate_grade_1(row) is True:
+            print("La Nota 1 es mayor que la Nota 2.")
+            pass
+        else:
+            print("La nota 2 es mayor que la 1")
+            pass
+
+
+
+
+
+
+
+        #Nota 2 vs 1::
+        if db.evaluate_grade_2(row) is True:
+            print("La Nota 2 es mayor que la Nota 3.")
+            pass
+        else:
+            print("La nota 2 es menor que la nota 3")
+            pass
+
         if db.evaluate_grade_3(row) is True:
             print("La Nota 3 es mayor que la Nota 4.")
             break
         else:
             print("La nota 4 es mayor que la 3")
-            break
-        
-    while True:
-        db.evaluate_grade_4(row)
+            pass
+
         if db.evaluate_grade_4(row) is True:
             print("La Nota 4 es mayor que la Nota 1.")
-            break
+            pass
         else:
             print("La nota 1 es mayor que la 4")
-            break
+            pass
+        break
 
 insert_grade()
