@@ -13,3 +13,4 @@ prueba de extensión: la media está entre 55 y 65, excluyendo 55 pero incluyend
 aprobado: la media está por encima de 65
 La etiqueta de clasificación debe agregarse a la columna correspondiente
 
+
