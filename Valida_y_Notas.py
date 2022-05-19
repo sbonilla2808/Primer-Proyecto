@@ -38,21 +38,17 @@ class Utils():
             grade_correct = True
         return grade
 
-
 class Db():
 
     def __init__(self, filename):
         self.filename = filename
-
     
     def find_id_in_db(self, cedula):
         with open(self.filename, 'r') as dbfile:
             row = 0
             lines = dbfile.readlines()
             for line in lines:
-                #print(line)
                 columns = line.split(',')
-                #print(columns)
                 if cedula==columns[0]:
                     return row
                 row += 1
@@ -74,7 +70,6 @@ class Db():
                 return
             print("Grade Save")
             columns = columns[:-1]+ [str(grade), "\n"]
-            #print(f'columns {columns}')
             lines[row] = ",".join(columns)
         with open(self.filename, 'w') as dbfile:
             dbfile.writelines(lines)

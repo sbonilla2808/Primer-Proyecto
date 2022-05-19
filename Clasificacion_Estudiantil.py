@@ -44,14 +44,13 @@ class Db():
             line = lines[row]
             columns = line.split(',')
             grades = columns[3:]
-            if len(grades) < 3:
+            if len(grades) <=3:
                 return None
-            if len(grades)>=5:
+            if len(grades)>=3:
                 return False
             return True
 
-    #Evaluate Nota 1:
-    def evaluate_grade_1(self, row):
+    def evaluate_grades(self, row):
         with open(self.filename, "r") as verifica:
             lines = verifica.readlines()
             line = lines[row]
@@ -62,33 +61,41 @@ class Db():
             nota_3 = grades[28:30]
             nota_4 = grades[31:33]
 
-        if nota_1 > nota_2:
+        if nota_1 > nota_2 and nota_1 > nota_3 and  nota_4 < nota_1:
             return True
-        if nota_1 > nota_3:
-            return True
-        if nota_1 > nota_4:
-            return True
-        else:
-            return False
 
-def valida_id():
+        # 1 < x < 20
+        #     True:
+        #     return True
+        # else:
+        #     False
+
+
+def valida_id_y_notas():
     row = -1
     db = Db('Excel_Bases.csv')
     while row < 1:
         cedula = Utils.ask_id()
         row = db.find_id_in_db(cedula)
-        if db.verifica_grades(row) is None:
-            print("No tiene suficientes notas para ser calificado.")
-            break
         if db.find_id_in_db(cedula) is False:
             print(f'The id {cedula} was not found')
             continue
         print("Correct ID")
         if db.verifica_grades(row) is False:
-            print(f"Verificando notas ")
-            break
-        elif db.verifica_grades(row) is True:
+            print("Verificando Notas")
             pass
-valida_id()
+        elif db.verifica_grades(row) is None:
+            print("No tiene suficientes notas para ser calificado.")
+            break
 
+valida_id_y_notas()
 
+def notas_altas():
+    row = 1
+    db = Db('Excel_Bases.csv')
+    db.evaluate_grades(row)
+    if db.evaluate_grades is True:
+        print("si es mayor")
+    else:
+        print("Es menor")
+notas_altas()
