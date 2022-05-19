@@ -63,9 +63,6 @@ class Db():
 
         if nota_1 > nota_2 and nota_1 > nota_3 and  nota_4 < nota_1:
             return True
-        else: 
-            return False
-
 
         # 1 < x < 20
         #     True:
@@ -97,12 +94,8 @@ def notas_altas():
     row = 1
     db = Db('Excel_Bases.csv')
     db.evaluate_grades(row)
-
     if db.evaluate_grades is True:
         print("si es mayor")
-        
-    if db.evaluate_grades is False:
+    else:
         print("Es menor")
-           
-
 notas_altas()
