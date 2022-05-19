@@ -1,7 +1,0 @@
-echo "# Primer-Proyecto" >> README.md 
-git init 
-git add README.md 
-git commit -m "first commit" 
-git branch -M main 
-git remote add origen https://github.com/Placido28B/Primer-Proyecto. git
- git push -u origen principals
