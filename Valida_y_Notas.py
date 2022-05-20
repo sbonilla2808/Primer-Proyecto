@@ -80,6 +80,13 @@ class Db():
             line = lines[row]
             columns = line.split(',')
             grades = columns[3:]
+            nota_1 = grades[22:24]
+            nota_2 = grades[25:27]
+            nota_3 = grades[28:30]
+            nota_4 = grades[31:33]
+            if nota_1 < nota_2:
+                print(f"Invalid Row {nota_1}, nothing done")
+                return
             if len(grades)>=5:
                 return False
             return True
@@ -104,7 +111,30 @@ def insert_grade():
         nota = Utils.ask_grade() 
         db.append_grade(row, nota)
         break
+    with open("Excel_Bases.csv", 'r') as verifica:
+        lines = verifica.readlines()
+        line = lines[row]
+        columns = line.split(',')
+        grades = columns[3:]
+        nota_1 = grades[0:1]
+        nota_2 = grades[1:2]
+        nota_3 = grades[2:3]
+        nota_4 = grades[3:4]
+            
+    print(f"Invalid Row {nota_1}, {nota_2}, {nota_3}, {nota_4}, nothing done")
+                
 insert_grade()
+
+
+
+
+
+
+
+
+
+
+
 
 
 

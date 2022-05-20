@@ -5,7 +5,7 @@ class Utils():
         id_correct = False
         while not id_correct:
             try:
-                user_id = int(input("Write the student id to be evaluate: \n"))
+                user_id = int(input("Write the student ID: \n"))
             except ValueError:
                 print("Only numbers are allowed.")
                 continue
@@ -24,7 +24,7 @@ class Db():
 
     def __init__(self, filename):
         self.filename = filename
-
+    
     def find_id_in_db(self, cedula):
         with open(self.filename, 'r') as dbfile:
             row = 0
@@ -38,40 +38,37 @@ class Db():
             row = -1
             return row
 
-    def verifica_grades(self, row):
+    def append_grade(self, row, grade):
+        with open(self.filename, 'r') as dbfile:
+            lines = dbfile.readlines()
+            if row >=len(lines) or row<1:
+                print(f"Invalid Row {row}, nothing done")
+                return
+            line = lines[row]
+            columns = line.split(',')
+            grades = columns[3:]
+            if len(grades)>=5:
+                print("No more grades allowed")
+                return
+            print("Grade Save")
+            columns = columns[:-1]+ [str(grade), "\n"]
+            lines[row] = ",".join(columns)
+        with open(self.filename, 'w') as dbfile:
+            dbfile.writelines(lines)
+
+    def allows_more_grades(self, row):
         with open(self.filename, 'r') as verifica:
             lines = verifica.readlines()
             line = lines[row]
             columns = line.split(',')
             grades = columns[3:]
-            if len(grades) <=3:
+            if len(grades)<2:
                 return None
-            if len(grades)>=3:
+            if len(grades)>=5:
                 return False
-            return True
+            
 
-    def evaluate_grades(self, row):
-        with open(self.filename, "r") as verifica:
-            lines = verifica.readlines()
-            line = lines[row]
-            columns = line
-            grades = columns[3:]
-            nota_1 = grades[22:24]
-            nota_2 = grades[25:27]
-            nota_3 = grades[28:30]
-            nota_4 = grades[31:33]
-
-        if nota_1 > nota_2 and nota_1 > nota_3 and  nota_4 < nota_1:
-            return True
-
-        # 1 < x < 20
-        #     True:
-        #     return True
-        # else:
-        #     False
-
-
-def valida_id_y_notas():
+def insert_grade():
     row = -1
     db = Db('Excel_Bases.csv')
     while row < 1:
@@ -81,21 +78,22 @@ def valida_id_y_notas():
             print(f'The id {cedula} was not found')
             continue
         print("Correct ID")
-        if db.verifica_grades(row) is False:
-            print("Verificando Notas")
-            pass
-        elif db.verifica_grades(row) is None:
-            print("No tiene suficientes notas para ser calificado.")
-            break
-
-valida_id_y_notas()
-
-def notas_altas():
-    row = 1
-    db = Db('Excel_Bases.csv')
-    db.evaluate_grades(row)
-    if db.evaluate_grades is True:
-        print("si es mayor")
-    else:
-        print("Es menor")
-notas_altas()
+        pass
+        db.allows_more_grades(row)
+        if db.allows_more_grades(row) is None:
+            print("No tiene suficientes notas para ser calificado")
+        break
+    
+    with open("Excel_Bases.csv", 'r') as verifica:
+        lines = verifica.readlines()
+        line = lines[row]
+        columns = line.split(',')
+        grades = columns[3:]
+        nota_1 = grades[0:1]
+        nota_2 = grades[1:2]
+        nota_3 = grades[2:3]
+        nota_4 = grades[3:4]
+            
+    print(f"Invalid Row {nota_1}, {nota_2}, {nota_3}, {nota_4}, nothing done")
+                
+insert_grade()
