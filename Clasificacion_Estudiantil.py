@@ -71,19 +71,18 @@ class Db():
 def insert_grade():
     row = -1
     db = Db('Excel_Bases.csv')
+    cedula = Utils.ask_id()
+    db.allows_more_grades(row)
     while row < 1:
-        cedula = Utils.ask_id()
         row = db.find_id_in_db(cedula)
         if db.find_id_in_db(cedula) is False:
             print(f'The id {cedula} was not found')
             continue
         print("Correct ID")
         pass
-        db.allows_more_grades(row)
         if db.allows_more_grades(row) is None:
             print("No tiene suficientes notas para ser calificado")
         break
-    
     with open("Excel_Bases.csv", 'r') as verifica:
         lines = verifica.readlines()
         line = lines[row]
