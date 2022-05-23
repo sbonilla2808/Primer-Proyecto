@@ -17,3 +17,6 @@ aprobado: la media está por encima de 65
 La etiqueta de clasificación debe agregarse a la columna correspondiente
 
 
+
+
+

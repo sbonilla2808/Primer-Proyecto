@@ -66,9 +66,9 @@ def llamadas_y_notas():
         db.allows_more_grades(row)
         if db.allows_more_grades(row) is False:
             break
-        elif db.allows_more_grades(row) is True:
-            pass
-        break
+        elif db.allows_more_grades(row) is None:
+            print("No tiene suficientes notas para ser calificado.")
+            break
     with open("Excel_Bases.csv", 'r') as verifica:
         lines = verifica.readlines()
         line = lines[row]
@@ -76,22 +76,9 @@ def llamadas_y_notas():
         grades = columns[3:]
         notamax = sorted(grades[0:4])
         notas_altas = notamax[1:4]
-        #print(len(notamax[1:4]))
         print(notas_altas)
 
 llamadas_y_notas()
 
-# temp_string = ("Hi my age is 32 years and 250 days12")
-# print(temp_string)
-
-# numbers = [int(temp)for temp in temp_string.split() if temp.isdigit()]
-
-# print(numbers)
-
-# import re
-
-# temp_string = "Hi my age is 32 years and 250.5 days12"
-# print(temp_string)
-# print([float(s) for s in re.findall(r'-?\d+\.?\d*', temp_string)])
 
 
