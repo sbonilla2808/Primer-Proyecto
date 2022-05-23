@@ -76,8 +76,12 @@ def llamadas_y_notas():
         grades = columns[3:]
         notamax = sorted(grades[0:4])
         notas_altas = notamax[1:4]
-        print(notas_altas)
 
+        notas = []
+        for nota_alta in notas_altas:
+            notas.append(int(nota_alta))
+        
+        print(notas)
 llamadas_y_notas()
 
 
