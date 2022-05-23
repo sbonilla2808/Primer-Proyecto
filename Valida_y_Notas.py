@@ -80,13 +80,6 @@ class Db():
             line = lines[row]
             columns = line.split(',')
             grades = columns[3:]
-            nota_1 = grades[22:24]
-            nota_2 = grades[25:27]
-            nota_3 = grades[28:30]
-            nota_4 = grades[31:33]
-            if nota_1 < nota_2:
-                print(f"Invalid Row {nota_1}, nothing done")
-                return
             if len(grades)>=5:
                 return False
             return True
@@ -111,17 +104,6 @@ def insert_grade():
         nota = Utils.ask_grade() 
         db.append_grade(row, nota)
         break
-    with open("Excel_Bases.csv", 'r') as verifica:
-        lines = verifica.readlines()
-        line = lines[row]
-        columns = line.split(',')
-        grades = columns[3:]
-        nota_1 = grades[0:1]
-        nota_2 = grades[1:2]
-        nota_3 = grades[2:3]
-        nota_4 = grades[3:4]
-            
-    print(f"Invalid Row {nota_1}, {nota_2}, {nota_3}, {nota_4}, nothing done")
                 
 insert_grade()
 
@@ -129,47 +111,6 @@ insert_grade()
 
 
 
-
-
-
-
-
-
-
-
-
-# def vuelve_a_empezar():
-    
-#     c = True
-#     b = False
-
-#     row = -1
-#     db = Db('Excel_Bases.csv')
-#     while True:
-#         if a == c:
-#             pass
-#         else:
-#             break
-#         cedula = Utils.ask_id()
-#         row = db.find_id_in_db(cedula)
-#         if db.find_id_in_db(cedula) is False:
-#             print(f'The id {cedula} was not found')
-#             continue
-#         print("Correct ID")
-#         pass
-#         db.allows_more_grades(row)
-#         if db.allows_more_grades(row) is False:
-#             print("No more grades"[::1])
-#             break
-#         elif db.allows_more_grades(row) is True:
-#             pass
-#         nota = Utils.ask_grade() 
-#         db.append_grade(row, nota)
-
-#     if a  == b:
-#         return
-        
-# vuelve_a_empezar()
 
 
 

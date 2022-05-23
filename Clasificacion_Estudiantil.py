@@ -1,3 +1,5 @@
+import re
+
 class Utils():
 
     @staticmethod
@@ -38,24 +40,6 @@ class Db():
             row = -1
             return row
 
-    def append_grade(self, row, grade):
-        with open(self.filename, 'r') as dbfile:
-            lines = dbfile.readlines()
-            if row >=len(lines) or row<1:
-                print(f"Invalid Row {row}, nothing done")
-                return
-            line = lines[row]
-            columns = line.split(',')
-            grades = columns[3:]
-            if len(grades)>=5:
-                print("No more grades allowed")
-                return
-            print("Grade Save")
-            columns = columns[:-1]+ [str(grade), "\n"]
-            lines[row] = ",".join(columns)
-        with open(self.filename, 'w') as dbfile:
-            dbfile.writelines(lines)
-
     def allows_more_grades(self, row):
         with open(self.filename, 'r') as verifica:
             lines = verifica.readlines()
@@ -68,31 +52,46 @@ class Db():
                 return False
             
 
-def insert_grade():
+def llamadas_y_notas():
     row = -1
     db = Db('Excel_Bases.csv')
-    cedula = Utils.ask_id()
-    db.allows_more_grades(row)
     while row < 1:
+        cedula = Utils.ask_id()
         row = db.find_id_in_db(cedula)
         if db.find_id_in_db(cedula) is False:
             print(f'The id {cedula} was not found')
             continue
         print("Correct ID")
         pass
-        if db.allows_more_grades(row) is None:
-            print("No tiene suficientes notas para ser calificado")
+        db.allows_more_grades(row)
+        if db.allows_more_grades(row) is False:
+            break
+        elif db.allows_more_grades(row) is True:
+            pass
         break
     with open("Excel_Bases.csv", 'r') as verifica:
         lines = verifica.readlines()
         line = lines[row]
         columns = line.split(',')
         grades = columns[3:]
-        nota_1 = grades[0:1]
-        nota_2 = grades[1:2]
-        nota_3 = grades[2:3]
-        nota_4 = grades[3:4]
-            
-    print(f"Invalid Row {nota_1}, {nota_2}, {nota_3}, {nota_4}, nothing done")
-                
-insert_grade()
+        notamax = sorted(grades[0:4])
+        notas_altas = notamax[1:4]
+        #print(len(notamax[1:4]))
+        print(notas_altas)
+
+llamadas_y_notas()
+
+# temp_string = ("Hi my age is 32 years and 250 days12")
+# print(temp_string)
+
+# numbers = [int(temp)for temp in temp_string.split() if temp.isdigit()]
+
+# print(numbers)
+
+# import re
+
+# temp_string = "Hi my age is 32 years and 250.5 days12"
+# print(temp_string)
+# print([float(s) for s in re.findall(r'-?\d+\.?\d*', temp_string)])
+
+
