@@ -77,11 +77,14 @@ def llamadas_y_notas():
         notamax = sorted(grades[0:4])
         notas_altas = notamax[1:4]
 
-        notas = []
+        total = 0
         for nota_alta in notas_altas:
-            notas.append(int(nota_alta))
+            total += int(nota_alta)
+
+        promedio = total/3
         
-        print(notas)
+        print(promedio)
+
 llamadas_y_notas()
 
 
