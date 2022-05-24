@@ -1,4 +1,5 @@
 import re
+from io import open 
 
 class Utils():
 
@@ -40,19 +41,33 @@ class Db():
             row = -1
             return row
 
-    def allows_more_grades(self, row):
+    def contador_de_notas(self, row):
         with open(self.filename, 'r') as verifica:
             lines = verifica.readlines()
             line = lines[row]
             columns = line.split(',')
             grades = columns[3:]
-            if len(grades)<2:
-                return None
-            if len(grades)>=5:
-                return False
-            
+        COMPARA = 3
+        if len(grades) <= COMPARA:
+            return False
+        if len(grades)> COMPARA:
+            return True
+    
+    def promedio(self, row):
+        with open(self.filename, 'r') as verifica:
+            lines = verifica.readlines()
+            line = lines[row]
+            columns = line.split(',')
+            grades = columns[3:]
+            notamax = sorted(grades[0:4])
+            notas_altas = notamax[1:4]
+            total = 0
+            for nota_alta in notas_altas:
+                total += int(nota_alta)
+            promedio_1 = total/3
+        return promedio_1
 
-def llamadas_y_notas():
+def llama_funciones():
     row = -1
     db = Db('Excel_Bases.csv')
     while row < 1:
@@ -61,31 +76,26 @@ def llamadas_y_notas():
         if db.find_id_in_db(cedula) is False:
             print(f'The id {cedula} was not found')
             continue
-        print("Correct ID")
         pass
-        db.allows_more_grades(row)
-        if db.allows_more_grades(row) is False:
-            break
-        elif db.allows_more_grades(row) is None:
+        db.contador_de_notas(row)
+        promedio = db.promedio(row)
+        if db.contador_de_notas(row) is True:
+            print(f"El promedio es: {promedio}")
+            pass
+        if db.contador_de_notas(row) is False:
             print("No tiene suficientes notas para ser calificado.")
             break
-    with open("Excel_Bases.csv", 'r') as verifica:
-        lines = verifica.readlines()
-        line = lines[row]
-        columns = line.split(',')
-        grades = columns[3:]
-        notamax = sorted(grades[0:4])
-        notas_altas = notamax[1:4]
+llama_funciones()
 
-        total = 0
-        for nota_alta in notas_altas:
-            total += int(nota_alta)
 
-        promedio = total/3
-        
-        print(promedio)
 
-llamadas_y_notas()
+# def insert_average():
+    
+#     row = -1
+#     db = Db('Excel_Bases.csv')
+#     promedio = db.promedio(row)
+#     print(promedio)
 
+# insert_average()
 
 
