@@ -67,6 +67,20 @@ class Db():
             promedio_1 = total/3
         return promedio_1
 
+    def append_promedio(self, row, promedio):
+        db = Db('Excel_Bases.csv')
+        db.promedio(row)
+
+        with open(self.filename, 'r') as dbfile:
+            lines = dbfile.readlines()
+            line = lines[row]
+            columns = line.split(',')
+            grades = columns[:8]
+            columns = columns + [str(promedio), "\n"]
+            lines[row] = ",".join(columns)
+        with open(self.filename, 'w') as dbfile:
+            dbfile.writelines(lines)
+
 def llama_funciones():
     row = -1
     db = Db('Excel_Bases.csv')
@@ -85,17 +99,5 @@ def llama_funciones():
         if db.contador_de_notas(row) is False:
             print("No tiene suficientes notas para ser calificado.")
             break
+        db.append_promedio(row, promedio)
 llama_funciones()
-
-
-
-# def insert_average():
-    
-#     row = -1
-#     db = Db('Excel_Bases.csv')
-#     promedio = db.promedio(row)
-#     print(promedio)
-
-# insert_average()
-
-
