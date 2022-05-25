@@ -83,6 +83,7 @@ class Db():
         if promedio >= APROBADO:
             print("APROVADO")
             return True # TRUE == APROBADO
+            
 
     def append_promedio(self, row, promedio):
         db = Db('Excel_Bases.csv')
