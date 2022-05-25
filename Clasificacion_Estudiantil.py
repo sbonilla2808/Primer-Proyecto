@@ -66,7 +66,9 @@ class Db():
                 total += int(nota_alta)
             promedio_1 = total/3
         return promedio_1
-
+    
+    def califica_estudiante(self, row):
+        
     def append_promedio(self, row, promedio):
         db = Db('Excel_Bases.csv')
         db.promedio(row)
@@ -76,7 +78,6 @@ class Db():
             columns = line.split(",")
             COMPARA = 8
             if len(columns) < COMPARA:
-                #print("Es menor que 8")
                 columns = columns[:6]+ [""]
             if len(columns) >= COMPARA:
                 pass
@@ -84,6 +85,8 @@ class Db():
             lines[row] = ",".join(columns)
         with open(self.filename, 'w') as dbfile:
             dbfile.writelines(lines)
+    
+    def calificacion_final():
 
 def valida_id():
     row = -1
