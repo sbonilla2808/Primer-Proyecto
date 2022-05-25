@@ -67,8 +67,23 @@ class Db():
             promedio_1 = total/3
         return promedio_1
     
-    def califica_estudiante(self, row):
-        
+    def califica_estudiante(self, row, promedio):
+        db = Db('Excel_Bases.csv')
+        db.promedio(row)
+        REPROBADO = 55
+        CONVOCATORIA = 56 # DEL 56 AL 65 
+        APROBADO = 65
+        if promedio <= REPROBADO:
+            print("REPROBADO")
+            return False # FALSE == REPROBADO
+        if promedio > CONVOCATORIA:
+            if promedio < APROBADO:
+                print("CONVOCATORIA")
+                return None # NONE == CONVOCATORIA
+        if promedio >= APROBADO:
+            print("APROVADO")
+            return True # TRUE == APROBADO
+
     def append_promedio(self, row, promedio):
         db = Db('Excel_Bases.csv')
         db.promedio(row)
@@ -86,7 +101,7 @@ class Db():
         with open(self.filename, 'w') as dbfile:
             dbfile.writelines(lines)
     
-    def calificacion_final():
+    #def append_calificacion():
 
 def valida_id():
     row = -1
@@ -107,4 +122,5 @@ def valida_id():
             print("No tiene suficientes notas para ser calificado.")
             break
         db.append_promedio(row, promedio)
+        db.califica_estudiante(row, promedio)
 valida_id()
