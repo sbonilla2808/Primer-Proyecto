@@ -63,7 +63,7 @@ class Db():
             notas_altas = notamax[1:4]
             total = 0
             for nota_alta in notas_altas:
-                total += float(nota_alta)
+                total += int(nota_alta)
             promedio_1 = total/3
         return promedio_1
 
@@ -76,16 +76,16 @@ class Db():
             columns = line.split(",")
             COMPARA = 8
             if len(columns) < COMPARA:
-                print("Es menor que 8")
+                #print("Es menor que 8")
+                columns = columns[:6]+ [""]
             if len(columns) >= COMPARA:
-                print("es igual a 8")
-            print(float(len(columns)))
-            columns = columns[0:7]+ [str(promedio), "\n"]
+                pass
+            columns = columns[0:7]+ [str(float(promedio)), "\n"]
             lines[row] = ",".join(columns)
         with open(self.filename, 'w') as dbfile:
             dbfile.writelines(lines)
 
-def llama_funciones():
+def valida_id():
     row = -1
     db = Db('Excel_Bases.csv')
     while row < 1:
@@ -104,4 +104,4 @@ def llama_funciones():
             print("No tiene suficientes notas para ser calificado.")
             break
         db.append_promedio(row, promedio)
-llama_funciones()
+valida_id()
