@@ -63,20 +63,24 @@ class Db():
             notas_altas = notamax[1:4]
             total = 0
             for nota_alta in notas_altas:
-                total += int(nota_alta)
+                total += float(nota_alta)
             promedio_1 = total/3
         return promedio_1
 
     def append_promedio(self, row, promedio):
         db = Db('Excel_Bases.csv')
         db.promedio(row)
-
         with open(self.filename, 'r') as dbfile:
             lines = dbfile.readlines()
             line = lines[row]
-            columns = line.split(',')
-            grades = columns[:8]
-            columns = columns + [str(promedio), "\n"]
+            columns = line.split(",")
+            COMPARA = 8
+            if len(columns) < COMPARA:
+                print("Es menor que 8")
+            if len(columns) >= COMPARA:
+                print("es igual a 8")
+            print(float(len(columns)))
+            columns = columns[0:7]+ [str(promedio), "\n"]
             lines[row] = ",".join(columns)
         with open(self.filename, 'w') as dbfile:
             dbfile.writelines(lines)
