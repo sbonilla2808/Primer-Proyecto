@@ -103,17 +103,5 @@ def insert_grade():
             pass
         nota = Utils.ask_grade() 
         db.append_grade(row, nota)
-        break
-                
+        break          
 insert_grade()
-
-
-
-
-
-
-
-
-
-
-

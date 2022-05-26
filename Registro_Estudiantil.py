@@ -7,7 +7,7 @@ apellido = ""
 nota = ""
 print("Welcome, enter your ID, the ID can only contain numbers. \n")
 
-def broo():
+def registro():
     ID_LENGTH = 9
     while True :
         try:
@@ -95,9 +95,4 @@ def broo():
         archivo_texto.write(str(nombre)+",")
         archivo_texto.write(str(apellido)+",")
         archivo_texto.write("\n")
-
-broo()
-
-
-
-
+registro()
