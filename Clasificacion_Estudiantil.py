@@ -74,20 +74,17 @@ class Db():
         CONVOCATORIA = 56 # DEL 56 AL 65 
         APROBADO = 65
         if promedio <= REPROBADO:
-            print("REPROBADO")
             return False # FALSE == REPROBADO
         if promedio > CONVOCATORIA:
             if promedio < APROBADO:
-                print("CONVOCATORIA")
                 return None # NONE == CONVOCATORIA
         if promedio >= APROBADO:
-            print("APROVADO")
-            return True # TRUE == APROBADO
-            
+            return True # TRUE == APROBADO  
 
     def append_promedio(self, row, promedio):
         db = Db('Excel_Bases.csv')
         db.promedio(row)
+        db.califica_estudiante(row, promedio)
         with open(self.filename, 'r') as dbfile:
             lines = dbfile.readlines()
             line = lines[row]
@@ -101,8 +98,27 @@ class Db():
             lines[row] = ",".join(columns)
         with open(self.filename, 'w') as dbfile:
             dbfile.writelines(lines)
-    
-    #def append_calificacion():
+
+    def append_clasificacion(self, row, promedio):
+        db = Db('Excel_Bases.csv')
+        db.califica_estudiante(row, promedio)
+        with open(self.filename, 'r') as dbfile:
+            lines = dbfile.readlines()
+            line = lines[row]
+            columns = line.split(",")
+            if db.califica_estudiante(row, promedio) is False:
+                    columns = columns[:8]+ ["REPROBADO"]
+                    pass
+            elif db.califica_estudiante(row, promedio) == None:
+                columns = columns[:8]+ ["CONVOCATORIA"]
+                pass
+            elif db.califica_estudiante(row, promedio) == True:
+                columns = columns[:8]+ ["APROBADO"]
+                pass
+            columns = columns[0:9] + ["\n"]
+            lines[row] = ",".join(columns)
+        with open(self.filename, 'w') as dbfile:
+            dbfile.writelines(lines)
 
 def valida_id():
     row = -1
@@ -124,4 +140,5 @@ def valida_id():
             break
         db.append_promedio(row, promedio)
         db.califica_estudiante(row, promedio)
+        db.append_clasificacion(row, promedio)
 valida_id()
