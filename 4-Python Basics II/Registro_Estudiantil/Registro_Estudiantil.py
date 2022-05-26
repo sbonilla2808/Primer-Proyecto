@@ -4,7 +4,6 @@ consultar = ""
 cedula = ""
 nombre = ""
 apellido = ""
-nota = ""
 print("Welcome, enter your ID, the ID can only contain numbers. \n")
 
 def registro():
