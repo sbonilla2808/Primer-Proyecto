@@ -1,27 +1,27 @@
 import re
 from io import open 
 
-class Utils():
+# class Utils():
 
-    @staticmethod
-    def ask_id():
-        id_correct = False
-        while not id_correct:
-            try:
-                user_id = int(input("Write the student ID: \n"))
-            except ValueError:
-                print("Only numbers are allowed.")
-                continue
+#     @staticmethod
+#     def ask_id():
+#         id_correct = False
+#         while not id_correct:
+#             try:
+#                 user_id = int(input("Write the student ID: \n"))
+#             except ValueError:
+#                 print("Only numbers are allowed.")
+#                 continue
 
-            if user_id > 999999999:
-                print("Wrong, you have extra numbers.")
-                continue
+#             if user_id > 999999999:
+#                 print("Wrong, you have extra numbers.")
+#                 continue
 
-            if user_id < 100000000:
-                print("Wrong, you are missing numbers.")
-                continue
-            id_correct = True
-        return str(user_id)
+#             if user_id < 100000000:
+#                 print("Wrong, you are missing numbers.")
+#                 continue
+#             id_correct = True
+#         return str(user_id)
 
 class Db():
 
@@ -124,12 +124,12 @@ def valida_id():
     row = -1
     db = Db('Excel_Bases.csv')
     while row < 1:
-        cedula = Utils.ask_id()
-        row = db.find_id_in_db(cedula)
-        if db.find_id_in_db(cedula) is False:
-            print(f'The id {cedula} was not found')
-            continue
-        pass
+        # cedula = Utils.ask_id()
+        # row = db.find_id_in_db(cedula)
+        # if db.find_id_in_db(cedula) is False:
+        #     print(f'The id {cedula} was not found')
+        #     continue
+        # pass
         db.contador_de_notas(row)
         promedio = db.promedio(row)
         if db.contador_de_notas(row) is True:
