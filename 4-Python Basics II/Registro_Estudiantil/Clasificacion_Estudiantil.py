@@ -141,4 +141,4 @@ def valida_id():
         db.append_promedio(row, promedio)
         db.califica_estudiante(row, promedio)
         db.append_clasificacion(row, promedio)
-valida_id()
+valida_id() 

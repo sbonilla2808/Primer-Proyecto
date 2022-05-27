@@ -1,9 +1,8 @@
 from io import open
 
-consultar = ""
-cedula = ""
-nombre = ""
-apellido = ""
+identification_card = ""
+name = ""
+lastname = ""
 print("Welcome, enter your ID, the ID can only contain numbers. \n")
 
 def registro():
@@ -25,73 +24,73 @@ def registro():
         
         print("The ID is valid. Saved.")
         break    
-    cedula = id
+    identification_card = id
 
     print("\n" "Welcome, in this space you must register your name, only letters are allowed in the name. \n")
 
     while True:
-        nuevo_nombre = str(input("Write your name: \n"))
+        new_name = str(input("Write your name: \n"))
         
-        demas_letras = nuevo_nombre[1::]
-        primera_letra = nuevo_nombre[0]
+        secondary_letters = new_name[1::]
+        first_letter = new_name[0]
 
         #VALIDAR NUMEROS
-        if nuevo_nombre.isdigit():
+        if new_name.isdigit():
             print("Only letters are allowed")
             continue
-        if nuevo_nombre.isalpha():
+        if new_name.isalpha():
             pass
         else:
             print("Only letters are allowed.")
             continue
 
         #VALIDAR MAYUS_MINIS
-        if not primera_letra.isupper():
+        if not first_letter.isupper():
             print("The first letter must be uppercase") 
             continue
 
-        if not demas_letras.islower():
+        if not secondary_letters.islower():
             print("Only the first letter can be capitalized")
             continue
        
-        if primera_letra.isupper and demas_letras.islower():
+        if first_letter.isupper and secondary_letters.islower():
             print("Name Save")
             break
 
-    nombre = nuevo_nombre
+    name = new_name
 
     while True:
-        nuevo_apellido = str(input("Write your lastname: \n"))
+        new_lastname = str(input("Write your lastname: \n"))
     
-        demas_letras = nuevo_apellido[1::]
-        primera_letra = nuevo_apellido[0]
+        secondary_letters = new_lastname[1::]
+        first_letter = new_lastname[0]
 
-        if nuevo_apellido.isdigit():
+        if new_lastname.isdigit():
             print("Only letters are allowed")
             continue
-        if nuevo_apellido.isalpha():
+        if new_lastname.isalpha():
             pass
         else:
             print("Only letters are allowed.")
             continue
 
         #VALIDAR MAYUS_MINIS
-        if not primera_letra.isupper():
+        if not first_letter.isupper():
             print("The first letter must be uppercase") 
             continue
 
-        if not demas_letras.islower():
+        if not secondary_letters.islower():
             print("Only the first letter can be capitalized")
             continue
     
-        if primera_letra.isupper and demas_letras.islower():
+        if first_letter.isupper and secondary_letters.islower():
             print("Lastname Save")
             break  
-    apellido = nuevo_apellido
+    lastname = new_lastname
 
     with open("Excel_Bases.csv","a") as archivo_texto: 
-        archivo_texto.write(str(cedula)+",")
-        archivo_texto.write(str(nombre)+",")
-        archivo_texto.write(str(apellido)+",")
+        archivo_texto.write(str(identification_card)+",")
+        archivo_texto.write(str(name)+",")
+        archivo_texto.write(str(lastname)+",")
         archivo_texto.write("\n")
 registro()

@@ -43,13 +43,13 @@ class Db():
     def __init__(self, filename):
         self.filename = filename
     
-    def find_id_in_db(self, cedula):
+    def find_id_in_db(self, identification_card):
         with open(self.filename, 'r') as dbfile:
             row = 0
             lines = dbfile.readlines()
             for line in lines:
                 columns = line.split(',')
-                if cedula==columns[0]:
+                if identification_card==columns[0]:
                     return row
                 row += 1
             return False
@@ -88,10 +88,10 @@ def insert_grade():
     row = -1
     db = Db('Excel_Bases.csv')
     while row < 1:
-        cedula = Utils.ask_id()
-        row = db.find_id_in_db(cedula)
-        if db.find_id_in_db(cedula) is False:
-            print(f'The id {cedula} was not found')
+        identification_card = Utils.ask_id()
+        row = db.find_id_in_db(identification_card)
+        if db.find_id_in_db(identification_card) is False:
+            print(f'The id {identification_card} was not found')
             continue
         print("Correct ID")
         pass
