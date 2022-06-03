@@ -1,28 +1,6 @@
 import re
 from io import open 
 
-# class Utils():
-
-#     @staticmethod
-#     def ask_id():
-#         id_correct = False
-#         while not id_correct:
-#             try:
-#                 user_id = int(input("Write the student ID: \n"))
-#             except ValueError:
-#                 print("Only numbers are allowed.")
-#                 continue
-
-#             if user_id > 999999999:
-#                 print("Wrong, you have extra numbers.")
-#                 continue
-
-#             if user_id < 100000000:
-#                 print("Wrong, you are missing numbers.")
-#                 continue
-#             id_correct = True
-#         return str(user_id)
-
 class Db():
 
     def __init__(self, filename):
@@ -41,21 +19,27 @@ class Db():
             row = -1
             return row
 
-    def contador_de_notas(self, row):
-        with open(self.filename, 'r') as verifica:
-            lines = verifica.readlines()
+    def tiene_cantidad_notas_minimas(self, row):
+        with open(self.filename, 'r') as dbfile:
+            lines = dbfile.readlines()
             line = lines[row]
             columns = line.split(',')
-            grades = columns[3:]
-        COMPARA = 3
-        if len(grades) <= COMPARA:
+            grades = columns[3:7]
+        cantidad_minima = 3
+        print(grades)
+        if len(grades) <= cantidad_minima:
             return False
-        if len(grades)> COMPARA:
-            return True
+        for i in range(cantidad_minima):
+            try:
+                int(grades[i])
+            except Exception as error:
+                print(error)
+                return False
+        return True
     
-    def promedio(self, row):
-        with open(self.filename, 'r') as verifica:
-            lines = verifica.readlines()
+    def calcula_promedio(self, row):
+        with open(self.filename, 'r') as dbfile:
+            lines = dbfile.readlines()
             line = lines[row]
             columns = line.split(',')
             grades = columns[3:]
@@ -67,24 +51,16 @@ class Db():
             promedio_1 = total/3
         return promedio_1
     
-    def califica_estudiante(self, row, promedio):
-        db = Db('Excel_Bases.csv')
-        db.promedio(row)
-        REPROBADO = 55
-        CONVOCATORIA = 56 # DEL 56 AL 65 
-        APROBADO = 65
-        if promedio <= REPROBADO:
-            return False # FALSE == REPROBADO
-        if promedio > CONVOCATORIA:
-            if promedio < APROBADO:
-                return None # NONE == CONVOCATORIA
-        if promedio >= APROBADO:
-            return True # TRUE == APROBADO  
+    def califica_estudiante(self, promedio):
+        if 0 < promedio <= 55:
+            return "REPROBADO"
+        if promedio <= 65:
+            return "CONVOCATORIA"
+        if promedio <= 100:
+            return "APROBADO"
+        return None
 
     def append_promedio(self, row, promedio):
-        db = Db('Excel_Bases.csv')
-        db.promedio(row)
-        db.califica_estudiante(row, promedio)
         with open(self.filename, 'r') as dbfile:
             lines = dbfile.readlines()
             line = lines[row]
@@ -94,51 +70,50 @@ class Db():
                 columns = columns[:6]+ [""]
             if len(columns) >= COMPARA:
                 pass
-            columns = columns[0:7]+ [str(float(promedio)), "\n"]
+            valor_promedio = "%2.0f" % promedio
+            print(valor_promedio)
+            columns = columns[0:7]+ [valor_promedio, "\n"]
+            print(columns)
             lines[row] = ",".join(columns)
         with open(self.filename, 'w') as dbfile:
             dbfile.writelines(lines)
 
-    def append_clasificacion(self, row, promedio):
-        db = Db('Excel_Bases.csv')
-        db.califica_estudiante(row, promedio)
+    def append_clasificacion(self, row, calificacion):
         with open(self.filename, 'r') as dbfile:
             lines = dbfile.readlines()
             line = lines[row]
             columns = line.split(",")
-            if db.califica_estudiante(row, promedio) is False:
-                    columns = columns[:8]+ ["REPROBADO"]
-                    pass
-            elif db.califica_estudiante(row, promedio) == None:
-                columns = columns[:8]+ ["CONVOCATORIA"]
-                pass
-            elif db.califica_estudiante(row, promedio) == True:
-                columns = columns[:8]+ ["APROBADO"]
-                pass
-            columns = columns[0:9] + ["\n"]
+            columns = columns[:8]+ [calificacion] + columns[9:] + ["\n"]
             lines[row] = ",".join(columns)
         with open(self.filename, 'w') as dbfile:
             dbfile.writelines(lines)
 
-def valida_id():
-    row = -1
+    def count_rows(self):
+        with open(self.filename, 'r') as dbfile:
+            lines = dbfile.readlines()
+            return len(lines)
+        return -1
+
+def clasifica_todos():
     db = Db('Excel_Bases.csv')
-    while row < 1:
-        # cedula = Utils.ask_id()
-        # row = db.find_id_in_db(cedula)
-        # if db.find_id_in_db(cedula) is False:
-        #     print(f'The id {cedula} was not found')
-        #     continue
-        # pass
-        db.contador_de_notas(row)
-        promedio = db.promedio(row)
-        if db.contador_de_notas(row) is True:
-            print(f"El promedio es: {promedio}")
-            pass
-        if db.contador_de_notas(row) is False:
+    row_quantity = db.count_rows()
+    print(f"numero de rows {row_quantity}")
+    for row in range(1, row_quantity):
+        aplica = db.tiene_cantidad_notas_minimas(row)
+        print(f"aplica? {aplica}")
+        if not aplica:
             print("No tiene suficientes notas para ser calificado.")
-            break
+            continue
+        promedio = db.calcula_promedio(row)
+        print(f"El promedio es: {promedio}")
         db.append_promedio(row, promedio)
-        db.califica_estudiante(row, promedio)
-        db.append_clasificacion(row, promedio)
-valida_id() 
+        calificacion = db.califica_estudiante(promedio)
+        if calificacion is None:
+            print("Promedio invalido")
+            continue
+        db.append_clasificacion(row, calificacion)
+
+db = Db('Excel_Bases.csv')
+
+clasifica_todos() 
+# print(db.tiene_cantidad_notas_minimas(2))
