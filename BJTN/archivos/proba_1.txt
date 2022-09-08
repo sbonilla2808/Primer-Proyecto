@@ -1,6 +1,0 @@
-#FRUTAS
-
-Fresa
-Kiwii
-Mango
-Papaya
